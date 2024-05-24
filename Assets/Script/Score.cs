@@ -1,32 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class Score : MonoBehaviour
 
+public class Score : MonoBehaviour
 {
-    private TextMeshPro m_TextMeshPro;
-    private int score;
-    public int increment = 10;
-    // Start is called before the first frame update
+    private TextMeshProUGUI textUGI;
+    private int score = 0;
+    int highscore = 0;
 
     private void Awake()
     {
-        m_TextMeshPro = GetComponent<TextMeshPro>();
+        textUGI = GetComponent<TextMeshProUGUI>();
+        LoadHighScore();
     }
-    void Start()
-    {
-       
-        score = 0;
-    }
-    public void scoreUpdate()
-    {
-        score = score + increment;
-        ScoreUpdateUI();    
 
-    }
-    void ScoreUpdateUI()
+    
+    public void incrementvalue(int increment)
     {
-        m_TextMeshPro.text =  " value : "+score;
+        score += increment;
+        UpdateScoreValue();
+        SaveHighScore();
+    }
+
+    public int getscore()
+    {
+        return score;
+    }
+
+    private void UpdateScoreValue()
+    {
+        textUGI.text = " " + score;
+    }
+
+    private void SaveHighScore()
+    {
+        highscore = PlayerPrefs.GetInt("HighScore", 0);
+        if (score > highscore)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private void LoadHighScore()
+    {
+         highscore = PlayerPrefs.GetInt("HighScore", 0);
+       
     }
 }

@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance {  get { return instance; } }
 
     public AudioSource soundFX;
-    public AudioSource soundMusic;
+   
 
     [SerializeField] private soundlist[] soundtypes;
     

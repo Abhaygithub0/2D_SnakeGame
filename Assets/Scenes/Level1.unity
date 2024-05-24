@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 83480437}
   - component: {fileID: 83480439}
   - component: {fileID: 83480438}
+  - component: {fileID: 83480440}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -301,7 +302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'coin: 0'
+  m_text: ' 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -378,6 +379,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83480436}
   m_CullTransparentMesh: 1
+--- !u!114 &83480440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83480436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab95067bf6edd9a4a8906ec7503550f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &312835365
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -50}
+  m_AnchoredPosition: {x: -150, y: -50}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692476718
@@ -876,7 +889,7 @@ MonoBehaviour:
   m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 76.5, y: 0}
+  m_Spacing: {x: 11, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 2
 --- !u!1 &705982230
@@ -1338,7 +1351,7 @@ RectTransform:
   m_GameObject: {fileID: 1227259275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 692476717}
@@ -1582,7 +1595,7 @@ PrefabInstance:
     - target: {fileID: 6478887114372616393, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
       propertyPath: Score
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 83480440}
     - target: {fileID: 6478887114372616393, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
       propertyPath: foodcollider
       value: 
