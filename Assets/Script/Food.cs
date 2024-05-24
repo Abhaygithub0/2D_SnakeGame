@@ -8,7 +8,7 @@ public class Food : MonoBehaviour
 {
     [SerializeField] private Collider2D foodcollider;
     [SerializeField] private float timedelay = 0;
-    //[SerializeField] private  Score Score;
+    [SerializeField] private  Score Score;
     
     
    
@@ -41,7 +41,7 @@ public class Food : MonoBehaviour
     {
         if (other.gameObject.GetComponent<SnakeMovement>() != null)
         {
-            //Score.scoreUpdate();
+            Score.incrementvalue(10);
             SoundManager.Instance.playclip(AudioType.pickablelight);
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
           
