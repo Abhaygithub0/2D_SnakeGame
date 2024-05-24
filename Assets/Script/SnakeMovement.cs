@@ -13,11 +13,17 @@ public class SnakeMovement : MonoBehaviour
     private List<Transform> _segment;
     public Transform snakebody;
     [SerializeField] GameObject GameoverUI;
-   
-    
-
     private bool ignoreBodyCollision = false; // Flag to ignore collision with body
     private int stepsAfterEating = 0; // Counter to track steps after eating
+   
+
+    private void Start()
+    {
+       
+        GameoverUI.SetActive(false);
+        _segment = new List<Transform>();
+        _segment.Add(transform); // Adding the head to the segment list
+    }
 
     private void Update()
     {
@@ -39,14 +45,34 @@ public class SnakeMovement : MonoBehaviour
                 }
             }
         }
+        SnakeWrapping();
     }
 
-    private void Start()
+    void SnakeWrapping()
     {
-        GameoverUI.SetActive(false);
-        _segment = new List<Transform>();
-        _segment.Add(transform); // Adding the head to the segment list
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
 
+        float rightSideOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x;
+        float leftSideOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(0f, 0f)).x;
+        float topOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y;
+        float bottomOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(0f, 0f)).y;
+
+        if (screenPos.x <= 0 && direction == Vector2.left)
+        {
+            transform.position = new Vector2(rightSideOfScreenInWorld, transform.position.y);
+        }
+        else if (screenPos.x >= Screen.width && direction == Vector2.right)
+        {
+            transform.position = new Vector2(leftSideOfScreenInWorld, transform.position.y);
+        }
+        else if (screenPos.y >= Screen.height && direction == Vector2.up)
+        {
+            transform.position = new Vector2(transform.position.x, bottomOfScreenInWorld);
+        }
+        else if (screenPos.y <= 0 && direction == Vector2.down)
+        {
+            transform.position = new Vector2(transform.position.x, topOfScreenInWorld);
+        }
     }
 
     private void HandleInput()
@@ -93,7 +119,7 @@ public class SnakeMovement : MonoBehaviour
         SoundManager.Instance.playclip(AudioType.Levelload);
         isGameStarted = true;
     }
-   
+
 
     public void Grow()
     {
@@ -118,7 +144,7 @@ public class SnakeMovement : MonoBehaviour
         if (other.tag == "Food")
         {
             Grow();
-           
+
         }
         else if (other.tag == "Body" && !ignoreBodyCollision)
         {
@@ -131,6 +157,6 @@ public class SnakeMovement : MonoBehaviour
         SoundManager.Instance.playclip(AudioType.death);
         Debug.Log("Die Game Over");
         GameoverUI.SetActive(true);
-        isGameStarted=false;
+        isGameStarted = false;
     }
 }
