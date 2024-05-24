@@ -22,7 +22,8 @@ public class SnakeMovement : MonoBehaviour
        
         GameoverUI.SetActive(false);
         _segment = new List<Transform>();
-        _segment.Add(transform); // Adding the head to the segment list
+        _segment.Add(transform); 
+        // Adding the head to the segment list
     }
 
     private void Update()
@@ -130,7 +131,7 @@ public class SnakeMovement : MonoBehaviour
         }
         else
         {
-            // If the list is empty, position the segment at the snake's current position or another default position
+       
             segment.position = transform.position;
         }
         _segment.Add(segment);
@@ -138,6 +139,21 @@ public class SnakeMovement : MonoBehaviour
         ignoreBodyCollision = true; // Set flag to ignore body collision
         stepsAfterEating = 1; // Set steps counter after eating
     }
+    public void MinusGrow()
+    {
+        if (_segment.Count > 1) 
+        {
+            Transform lastSegment = _segment[_segment.Count - 1];
+            _segment.Remove(lastSegment);
+            Destroy(lastSegment.gameObject); 
+        }
+        else
+        {
+           
+            Debug.Log("No more segments to remove!");
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -149,6 +165,10 @@ public class SnakeMovement : MonoBehaviour
         else if (other.tag == "Body" && !ignoreBodyCollision)
         {
             Die();
+        }
+        else if(other.tag == "PosionFood" )
+        {
+            MinusGrow();
         }
     }
 
