@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,14 +16,16 @@ public class SnakeMovement : MonoBehaviour
     [SerializeField] GameObject GameoverUI;
     private bool ignoreBodyCollision = false; // Flag to ignore collision with body
     private int stepsAfterEating = 0; // Counter to track steps after eating
-   
+    [SerializeField] private float immunityDuration = 3f; // Duration of immunity in seconds
+
 
     private void Start()
     {
        
         GameoverUI.SetActive(false);
         _segment = new List<Transform>();
-        _segment.Add(transform); // Adding the head to the segment list
+        _segment.Add(transform); 
+        // Adding the head to the segment list
     }
 
     private void Update()
@@ -130,7 +133,7 @@ public class SnakeMovement : MonoBehaviour
         }
         else
         {
-            // If the list is empty, position the segment at the snake's current position or another default position
+       
             segment.position = transform.position;
         }
         _segment.Add(segment);
@@ -138,6 +141,21 @@ public class SnakeMovement : MonoBehaviour
         ignoreBodyCollision = true; // Set flag to ignore body collision
         stepsAfterEating = 1; // Set steps counter after eating
     }
+    public void MinusGrow()
+    {
+        if (_segment.Count > 1) 
+        {
+            Transform lastSegment = _segment[_segment.Count - 1];
+            _segment.Remove(lastSegment);
+            Destroy(lastSegment.gameObject); 
+        }
+        else
+        {
+           
+            Debug.Log("No more segments to remove!");
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -150,6 +168,14 @@ public class SnakeMovement : MonoBehaviour
         {
             Die();
         }
+        else if(other.tag == "PosionFood" )
+        {
+            MinusGrow();
+        }
+        else if (other.tag == "PowerFood")
+        {
+            SetImmunity(immunityDuration);
+        }
     }
 
     private void Die()
@@ -159,4 +185,16 @@ public class SnakeMovement : MonoBehaviour
         GameoverUI.SetActive(true);
         isGameStarted = false;
     }
+    private void SetImmunity(float duration)
+    {
+        ignoreBodyCollision = true;
+        StartCoroutine(RemoveImmunityAfterDelay(duration));
+    }
+
+    private IEnumerator RemoveImmunityAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ignoreBodyCollision = false;
+    }
+
 }

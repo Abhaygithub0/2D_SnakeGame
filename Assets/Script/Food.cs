@@ -18,7 +18,7 @@ public class Food : MonoBehaviour
       
     }
 
-    private void RandomizePosition()
+    public void RandomizePosition()
     {
        
         Bounds bounds = foodcollider.bounds;
@@ -30,12 +30,15 @@ public class Food : MonoBehaviour
         
     }
 
-    private void activefood()
+    public void activefood()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
   
-   
+   public void UnactiveFood()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
 
      private void OnTriggerEnter2D(Collider2D other)
     {
@@ -43,11 +46,9 @@ public class Food : MonoBehaviour
         {
             Score.incrementvalue(10);
             SoundManager.Instance.playclip(AudioType.pickablelight);
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            UnactiveFood();
           
             StartCoroutine(DelayedRandomizePosition(timedelay));
-           
-            
 
         }
     }
@@ -62,8 +63,3 @@ public class Food : MonoBehaviour
     }
 
 }
-
-
-
-
-
