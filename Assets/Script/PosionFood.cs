@@ -3,52 +3,76 @@ using UnityEngine;
 
 public class PosionFood : MonoBehaviour
 {
+    [SerializeField] private int scoreLoss = 10; // Amount of score to lose
+    [SerializeField] private Food foodComponent; // Reference to the Food component
+    [SerializeField] private SnakeMovement snake; // Reference to the SnakeMovement component
+    [SerializeField] private Score score; // Reference to the Score component
     [SerializeField] private Collider2D foodCollider;
-    [SerializeField] private float timeDelay = 5f; 
-    [SerializeField] private Score score;
-    public int scoreNumber = 0;
+    [SerializeField] private float timeDelay = 5f;
+    [SerializeField] private float TimeRun = 3f;
+    bool IsFoodActive = false;
+
+    private void Awake()
+    {
+        UnactiveFood();
+
+    }
 
     private void Start()
     {
-      
-       RandomizePosition();
+        StartCoroutine(DelayActivation(timeDelay));
     }
 
-    private void RandomizePosition()
+    void UnactiveFood()
     {
-      
-        Bounds bounds = foodCollider.bounds;
-        float x = Random.Range(bounds.min.x, bounds.max.x);
-        float y = Random.Range(bounds.min.y, bounds.max.y);
-        transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
-       
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        IsFoodActive = false;
     }
-
     private void ActivateFood()
     {
-       
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
-       
-      
+        gameObject.GetComponent<Collider2D>().enabled = true;
+        IsFoodActive=true;
+        StartCoroutine(CheckActivation(TimeRun));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<SnakeMovement>() != null)
         {
-            score.incrementvalue(scoreNumber);
             SoundManager.Instance.playclip(AudioType.pickableheavy);
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            
+            ConsumePowerFood();
             StartCoroutine(DelayActivation(timeDelay));
         }
     }
 
-    private IEnumerator DelayActivation(float delay)  
+    private void ConsumePowerFood()
     {
-        
+        score.incrementvalue(scoreLoss);
+        UnactiveFood();
+    }
+
+    public void RandomizePosition()
+    {
+        Bounds bounds = foodCollider.bounds;
+        float x = UnityEngine.Random.Range(bounds.min.x, bounds.max.x);
+        float y = UnityEngine.Random.Range(bounds.min.y, bounds.max.y);
+        transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
+    }
+    private IEnumerator DelayActivation(float delay)
+    {
         yield return new WaitForSeconds(delay);
-        RandomizePosition();
         ActivateFood();
+        RandomizePosition();
+    }
+    private IEnumerator CheckActivation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (IsFoodActive == true)
+        {
+            UnactiveFood();
+            StartCoroutine(DelayActivation(timeDelay));
+        }
     }
 }

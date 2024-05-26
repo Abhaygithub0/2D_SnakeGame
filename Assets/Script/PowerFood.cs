@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class PowerFood : MonoBehaviour
 {
-    [SerializeField] private int scoreLoss = 10; // Amount of score to lose
-    [SerializeField] private Food foodComponent; // Reference to the Food component
-    [SerializeField] private SnakeMovement snake; // Reference to the SnakeMovement component
-    [SerializeField] private Score score; // Reference to the Score component
+    [SerializeField] private int scoreLoss = 10;
+    [SerializeField] private Food foodComponent;
+    [SerializeField] private SnakeMovement snake;
+    [SerializeField] private Score score;
     [SerializeField] private Collider2D foodCollider;
     [SerializeField] private float timeDelay = 5f;
+    [SerializeField] private float TimeRun = 3f;
+    bool IsFoodActive= false;
+
 
     private void Awake()
     {
-       UnactiveFood();
-        
+        UnactiveFood();
+
     }
 
     private void Start()
@@ -26,23 +29,28 @@ public class PowerFood : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<Collider2D>().enabled = false;
+        IsFoodActive=false;
     }
     private void ActivateFood()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<Collider2D>().enabled = true;
+        IsFoodActive = true;
+        StartCoroutine(CheckActivation(TimeRun));
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<SnakeMovement>() != null)
         {
-            Debug.Log("OnTriggerEnter2D: Snake collided");
+            SoundManager.Instance.playclip(AudioType.pickableheavy);
             ConsumePowerFood();
             StartCoroutine(DelayActivation(timeDelay));
         }
+
     }
-    
+
     private void ConsumePowerFood()
     {
         score.incrementvalue(scoreLoss);
@@ -62,5 +70,13 @@ public class PowerFood : MonoBehaviour
         ActivateFood();
         RandomizePosition();
     }
-    
+    private IEnumerator CheckActivation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (IsFoodActive==true)
+        {
+            UnactiveFood();
+            StartCoroutine(DelayActivation(timeDelay));
+        }
+    }
 }

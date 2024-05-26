@@ -30,24 +30,24 @@ public class Food : MonoBehaviour
         
     }
 
-    public void activefood()
-    {
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
-    }
-  
-   public void UnactiveFood()
+    void UnactiveFood()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+    }
+    private void ActivateFood()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<Collider2D>().enabled = true;
     }
 
-     private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<SnakeMovement>() != null)
         {
             Score.incrementvalue(10);
             SoundManager.Instance.playclip(AudioType.pickablelight);
             UnactiveFood();
-          
             StartCoroutine(DelayedRandomizePosition(timedelay));
 
         }
@@ -57,7 +57,7 @@ public class Food : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         RandomizePosition();
-        activefood();
+        ActivateFood();
 
         
     }
