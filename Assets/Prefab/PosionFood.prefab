@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5846133151243578445}
   - component: {fileID: 2388476991088493649}
   - component: {fileID: 7846002630209708103}
-  - component: {fileID: 6478887114372616393}
+  - component: {fileID: 5492675276797125054}
   m_Layer: 0
   m_Name: PosionFood
-  m_TagString: Food
+  m_TagString: PosionFood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &6478887114372616393
+--- !u!114 &5492675276797125054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,8 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7054787240232049151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c76b6ce0b7fa29145baa7dfb955f8f3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 03583c2aa27d79248a3b14ac754a99fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodcollider: {fileID: 0}
-  timedelay: 45
+  foodCollider: {fileID: 0}
+  timeDelay: 5
+  score: {fileID: 0}
+  scoreNumber: -20
