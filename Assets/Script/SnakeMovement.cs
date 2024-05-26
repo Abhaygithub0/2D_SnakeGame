@@ -6,17 +6,17 @@ using UnityEngine;
 
 public class SnakeMovement : MonoBehaviour
 {
-    private float stepSize = 1.0f; // Size of one grid step
-    public float moveRate = 0.5f; // Time between moves in seconds
-    private Vector2 direction = Vector2.up; // Initial direction
-    public bool isGameStarted = false; // Check if the game has started
-    private float timer; // Timer to track movement intervals
+    private float stepSize = 1.0f;
+    public float moveRate = 0.5f; 
+    private Vector2 direction = Vector2.up; 
+    public bool isGameStarted = false; 
+    private float timer; 
     private List<Transform> _segment;
     public Transform snakebody;
     [SerializeField] GameObject GameoverUI;
-    private bool ignoreBodyCollision = false; // Flag to ignore collision with body
-    private int stepsAfterEating = 0; // Counter to track steps after eating
-    [SerializeField] private float immunityDuration = 3f; // Duration of immunity in seconds
+    private bool ignoreBodyCollision = false; 
+    private int stepsAfterEating = 0; 
+    [SerializeField] private float immunityDuration = 3f; 
 
 
     private void Start()
@@ -25,7 +25,7 @@ public class SnakeMovement : MonoBehaviour
         GameoverUI.SetActive(false);
         _segment = new List<Transform>();
         _segment.Add(transform); 
-        // Adding the head to the segment list
+       
     }
 
     private void Update()
@@ -109,7 +109,7 @@ public class SnakeMovement : MonoBehaviour
         {
             _segment[i].position = _segment[i - 1].position;
         }
-        // Move the snake by one grid step
+       
         transform.position = new Vector3(
             Mathf.Round(transform.position.x) + direction.x * stepSize,
             Mathf.Round(transform.position.y) + direction.y * stepSize,
@@ -138,8 +138,8 @@ public class SnakeMovement : MonoBehaviour
         }
         _segment.Add(segment);
 
-        ignoreBodyCollision = true; // Set flag to ignore body collision
-        stepsAfterEating = 1; // Set steps counter after eating
+        ignoreBodyCollision = true; 
+        stepsAfterEating = 1; 
     }
     public void MinusGrow()
     {
