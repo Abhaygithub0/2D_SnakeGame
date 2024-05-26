@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,7 +16,8 @@ public class SnakeMovement : MonoBehaviour
     [SerializeField] GameObject GameoverUI;
     private bool ignoreBodyCollision = false; // Flag to ignore collision with body
     private int stepsAfterEating = 0; // Counter to track steps after eating
-   
+    [SerializeField] private float immunityDuration = 3f; // Duration of immunity in seconds
+
 
     private void Start()
     {
@@ -170,6 +172,10 @@ public class SnakeMovement : MonoBehaviour
         {
             MinusGrow();
         }
+        else if (other.tag == "PowerFood")
+        {
+            SetImmunity(immunityDuration);
+        }
     }
 
     private void Die()
@@ -179,4 +185,16 @@ public class SnakeMovement : MonoBehaviour
         GameoverUI.SetActive(true);
         isGameStarted = false;
     }
+    private void SetImmunity(float duration)
+    {
+        ignoreBodyCollision = true;
+        StartCoroutine(RemoveImmunityAfterDelay(duration));
+    }
+
+    private IEnumerator RemoveImmunityAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ignoreBodyCollision = false;
+    }
+
 }

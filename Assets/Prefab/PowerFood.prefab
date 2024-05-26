@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5846133151243578445}
   - component: {fileID: 2388476991088493649}
-  - component: {fileID: 7846002630209708103}
-  - component: {fileID: -6169861361328348186}
+  - component: {fileID: 2011738614476601366}
+  - component: {fileID: 1346475753944009712}
   m_Layer: 0
   m_Name: PowerFood
-  m_TagString: Food
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7846002630209708103
+--- !u!114 &2011738614476601366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054787240232049151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bec9e00f02c2c442ba4a7ed01d16a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreLoss: 10
+  immunityDuration: 10
+  autoDestroyTime: 2
+  respawnDelay: 10
+  foodComponent: {fileID: 0}
+  snake: {fileID: 0}
+  score: {fileID: 0}
+  foodcollider: {fileID: 0}
+--- !u!61 &1346475753944009712
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,28 +138,16 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016578197, y: 0.014051557}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.6}
+    oldSize: {x: 1.1428572, y: 1.1428572}
     newSize: {x: 1.48, y: 1.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
-  m_EdgeRadius: 10
---- !u!114 &-6169861361328348186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7054787240232049151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bec9e00f02c2c442ba4a7ed01d16a9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Size: {x: 0.75, y: 0.75}
+  m_EdgeRadius: 0

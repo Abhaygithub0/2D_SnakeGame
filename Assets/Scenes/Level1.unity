@@ -525,6 +525,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 83480440}
     - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
+      propertyPath: timeDelay
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
       propertyPath: scoreNumber
       value: -20
       objectReference: {fileID: 0}
@@ -1152,6 +1156,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 83480440}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: snake
+      value: 
+      objectReference: {fileID: 1452403418}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: scoreLoss
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: timeDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: foodCollider
+      value: 
+      objectReference: {fileID: 1955758039}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: foodcollider
+      value: 
+      objectReference: {fileID: 1955758039}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: respawnDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: foodComponent
+      value: 
+      objectReference: {fileID: 1316530067}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: autoDestroyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: immunityDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388476991088493649, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5846133151243578445, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1192,25 +1240,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6478887114372616393, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
-      propertyPath: timedelay
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6478887114372616393, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
-      propertyPath: foodcollider
-      value: 
-      objectReference: {fileID: 1955758039}
     - target: {fileID: 7054787240232049151, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: m_Name
       value: PowerFood
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054787240232049151, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054787240232049151, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1502,6 +1534,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+--- !u!114 &1316530067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6478887114372616393, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+  m_PrefabInstance: {fileID: 1316530066}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76b6ce0b7fa29145baa7dfb955f8f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1452403415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,6 +1648,7 @@ MonoBehaviour:
   isGameStarted: 0
   snakebody: {fileID: 5846133151243578445, guid: 6009f20453ed3634fa74306570737cb0, type: 3}
   GameoverUI: {fileID: 2139711406}
+  immunityDuration: 3
 --- !u!50 &1452403419
 Rigidbody2D:
   serializedVersion: 4

@@ -28,7 +28,7 @@ public class PosionFood : MonoBehaviour
     {
        
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        gameObject.SetActive(true);
+       
       
     }
 
