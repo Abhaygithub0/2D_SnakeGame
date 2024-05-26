@@ -1,31 +1,29 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class SnakeMovement : MonoBehaviour
+public class Player2 : MonoBehaviour
 {
     private float stepSize = 1.0f;
-    public float moveRate = 0.5f; 
-    private Vector2 direction = Vector2.up; 
-    public bool isGameStarted = false; 
-    private float timer; 
+    public float moveRate = 0.5f;
+    private Vector2 direction = Vector2.up;
+    public bool isGameStarted = false;
+    private float timer;
     private List<Transform> _segment;
     public Transform snakebody;
     [SerializeField] GameObject GameoverUI;
-    private bool ignoreBodyCollision = false; 
-    private int stepsAfterEating = 0; 
-    [SerializeField] private float immunityDuration = 3f; 
+    private bool ignoreBodyCollision = false;
+    private int stepsAfterEating = 0;
+    [SerializeField] private float immunityDuration = 3f;
 
 
     private void Start()
     {
-       
+
         GameoverUI.SetActive(false);
         _segment = new List<Transform>();
-        _segment.Add(transform); 
-       
+        _segment.Add(transform);
+
     }
 
     private void Update()
@@ -80,28 +78,28 @@ public class SnakeMovement : MonoBehaviour
 
     private void HandleInput()
     {
-        // Ensures the snake can only make orthogonal turns and not reverse on itself
-        if (Input.GetKeyDown(KeyCode.D) && direction != Vector2.left)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && direction != Vector2.left)
         {
             direction = Vector2.right;
             transform.rotation = Quaternion.Euler(0, 0, -90);
         }
-        else if ( Input.GetKeyDown(KeyCode.A) && direction != Vector2.right)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && direction != Vector2.right)
         {
             direction = Vector2.left;
             transform.rotation = Quaternion.Euler(0, 0, 90);
         }
-        else if ( Input.GetKeyDown(KeyCode.W) && direction != Vector2.down)
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && direction != Vector2.down)
         {
             direction = Vector2.up;
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (Input.GetKeyDown(KeyCode.S) && direction != Vector2.up)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && direction != Vector2.up)
         {
             direction = Vector2.down;
             transform.rotation = Quaternion.Euler(0, 0, 180);
         }
     }
+
 
     public void Move()
     {
@@ -109,7 +107,7 @@ public class SnakeMovement : MonoBehaviour
         {
             _segment[i].position = _segment[i - 1].position;
         }
-       
+
         transform.position = new Vector3(
             Mathf.Round(transform.position.x) + direction.x * stepSize,
             Mathf.Round(transform.position.y) + direction.y * stepSize,
@@ -133,25 +131,25 @@ public class SnakeMovement : MonoBehaviour
         }
         else
         {
-       
+
             segment.position = transform.position;
         }
         _segment.Add(segment);
 
-        ignoreBodyCollision = true; 
-        stepsAfterEating = 1; 
+        ignoreBodyCollision = true;
+        stepsAfterEating = 1;
     }
     public void MinusGrow()
     {
-        if (_segment.Count > 1) 
+        if (_segment.Count > 1)
         {
             Transform lastSegment = _segment[_segment.Count - 1];
             _segment.Remove(lastSegment);
-            Destroy(lastSegment.gameObject); 
+            Destroy(lastSegment.gameObject);
         }
         else
         {
-           
+
             Debug.Log("No more segments to remove!");
         }
     }
@@ -168,7 +166,7 @@ public class SnakeMovement : MonoBehaviour
         {
             Die();
         }
-        else if(other.tag == "PosionFood" )
+        else if (other.tag == "PosionFood")
         {
             MinusGrow();
         }
