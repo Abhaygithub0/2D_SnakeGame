@@ -43,7 +43,7 @@ public class Food : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<SnakeMovement>() != null)
+        if (other.gameObject.GetComponent<SnakeMovement>() != null||other.gameObject.GetComponent<Player2>() != null) 
         {
             Score.incrementvalue(10);
             SoundManager.Instance.playclip(AudioType.pickablelight);
