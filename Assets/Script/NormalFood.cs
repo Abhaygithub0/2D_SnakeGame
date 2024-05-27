@@ -1,13 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PosionFood :Food
+public class NormalFood : Food
 {
-    new void Awake()
+  new void Awake()
     {
         base.Awake();
     }
-    new void Start()
+   new void Start()
     {
         base.Start();
     }
@@ -22,4 +23,5 @@ public class PosionFood :Food
         }
 
     }
+
 }

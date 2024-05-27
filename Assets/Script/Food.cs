@@ -1,24 +1,33 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 
 public class Food : MonoBehaviour
 {
     [SerializeField] private Collider2D foodcollider;
-    [SerializeField] private float timedelay = 0;
-    [SerializeField] private  Score Score;
-    
-    
-   
-    private void Start()
+    [SerializeField] private  ScoreDisplay Score;
+    protected bool IsFoodActive = false;
+    [SerializeField] protected float TimeDelay = 5f;
+    [SerializeField] protected float TimeRun = 3f;
+    [SerializeField] protected float CheckTimeRun = 3f;
+    [SerializeField] protected int ScoreValue;
+
+
+    protected void Awake()
     {
-        RandomizePosition();
-      
+        UnactiveFood();
+
+    }
+    protected void Start()
+    {
+        StartCoroutine(DelayedRandomizePosition(TimeRun));
+
     }
 
-    public void RandomizePosition()
+    protected void RandomizePosition()
     {
        
         Bounds bounds = foodcollider.bounds;
@@ -29,37 +38,42 @@ public class Food : MonoBehaviour
 
         
     }
-
-    void UnactiveFood()
+    protected void ConsumePowerFood()
     {
+       Score .incrementvalue(ScoreValue);
+        UnactiveFood();
+    }
+
+    protected void UnactiveFood()
+    {
+        IsFoodActive = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<Collider2D>().enabled = false;
     }
-    private void ActivateFood()
+    protected void ActivateFood()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<Collider2D>().enabled = true;
+        IsFoodActive = true;
+        StartCoroutine(CheckActivation(CheckTimeRun));
+       
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<SnakeMovement>() != null||other.gameObject.GetComponent<Player2>() != null) 
-        {
-            Score.incrementvalue(10);
-            SoundManager.Instance.playclip(AudioType.pickablelight);
-            UnactiveFood();
-            StartCoroutine(DelayedRandomizePosition(timedelay));
-
-        }
-    }
-
-    private IEnumerator DelayedRandomizePosition(float delay)
+    protected IEnumerator DelayedRandomizePosition(float delay)
     {
         yield return new WaitForSeconds(delay);
         RandomizePosition();
         ActivateFood();
 
-        
     }
+    protected IEnumerator CheckActivation(float delay)
+    {
 
+        yield return new WaitForSeconds(delay);
+        if (IsFoodActive == true)
+        {
+            UnactiveFood();
+            StartCoroutine(DelayedRandomizePosition(TimeDelay));
+        }
+    }
 }

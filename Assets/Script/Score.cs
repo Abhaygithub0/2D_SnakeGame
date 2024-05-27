@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class Score : MonoBehaviour
+public class ScoreDisplay : MonoBehaviour
 {
     private TextMeshProUGUI textUGI;
     private int score = 0;

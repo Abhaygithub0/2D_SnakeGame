@@ -6,20 +6,20 @@ using UnityEngine;
 
 public class SnakeMovement : MonoBehaviour
 {
-    private float stepSize = 1.0f;
+    protected float stepSize = 1.0f;
     public float moveRate = 0.5f; 
-    private Vector2 direction = Vector2.up; 
+    protected Vector2 direction = Vector2.up; 
     public bool isGameStarted = false; 
-    private float timer; 
-    private List<Transform> _segment;
+    protected float timer; 
+    protected List<Transform> _segment;
     public Transform snakebody;
     [SerializeField] GameObject GameoverUI;
-    private bool ignoreBodyCollision = false; 
-    private int stepsAfterEating = 0; 
-    [SerializeField] private float immunityDuration = 3f; 
+    protected bool ignoreBodyCollision = false; 
+    protected int stepsAfterEating = 0; 
+    [SerializeField] protected float immunityDuration = 3f; 
 
 
-    private void Start()
+    public void Start()
     {
        
         GameoverUI.SetActive(false);
@@ -28,7 +28,7 @@ public class SnakeMovement : MonoBehaviour
        
     }
 
-    private void Update()
+    public void Update()
     {
         if (isGameStarted)
         {
@@ -78,30 +78,12 @@ public class SnakeMovement : MonoBehaviour
         }
     }
 
-    private void HandleInput()
+    protected virtual void HandleInput()
     {
-        // Ensures the snake can only make orthogonal turns and not reverse on itself
-        if (Input.GetKeyDown(KeyCode.D) && direction != Vector2.left)
-        {
-            direction = Vector2.right;
-            transform.rotation = Quaternion.Euler(0, 0, -90);
-        }
-        else if ( Input.GetKeyDown(KeyCode.A) && direction != Vector2.right)
-        {
-            direction = Vector2.left;
-            transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        else if ( Input.GetKeyDown(KeyCode.W) && direction != Vector2.down)
-        {
-            direction = Vector2.up;
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && direction != Vector2.up)
-        {
-            direction = Vector2.down;
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
+        // input handling logic both player diffrentlly
+      
     }
+
 
     public void Move()
     {
@@ -156,42 +138,20 @@ public class SnakeMovement : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Food")
-        {
-            Grow();
-
-        }
-        else if (other.tag == "Body" && !ignoreBodyCollision)
-        {
-            Die();
-        }
-        else if(other.tag == "PosionFood" )
-        {
-            MinusGrow();
-        }
-        else if (other.tag == "PowerFood")
-        {
-            SetImmunity(immunityDuration);
-        }
-    }
-
-    private void Die()
+    protected void Die()
     {
         SoundManager.Instance.playclip(AudioType.death);
         Debug.Log("Die Game Over");
         GameoverUI.SetActive(true);
         isGameStarted = false;
     }
-    private void SetImmunity(float duration)
+    protected void SetImmunity(float duration)
     {
         ignoreBodyCollision = true;
         StartCoroutine(RemoveImmunityAfterDelay(duration));
     }
 
-    private IEnumerator RemoveImmunityAfterDelay(float delay)
+    protected IEnumerator RemoveImmunityAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         ignoreBodyCollision = false;
