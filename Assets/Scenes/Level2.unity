@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6fd21fa0bb93848944e80eeefbcad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRate: 0.1
+  moveRate: 0.2
   isGameStarted: 0
   snakebody: {fileID: 5846133151243578445, guid: ebb80baaca51ced409cce4e899579b5c, type: 3}
   GameoverUI: {fileID: 2139711406}
@@ -1409,18 +1409,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1452403418}
-        m_TargetAssemblyTypeName: SnakeMovement, Assembly-CSharp
-        m_MethodName: StartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2005089137}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1433,8 +1421,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1452403421}
+        m_TargetAssemblyTypeName: SnakeMovement, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1212003908}
-        m_TargetAssemblyTypeName: Player2, Assembly-CSharp
+        m_TargetAssemblyTypeName: SnakeMovement, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -1547,6 +1547,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: Score
+      value: 
+      objectReference: {fileID: 83480440}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: TimeDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: ScoreValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: foodcollider
+      value: 
+      objectReference: {fileID: 1955758039}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1565,6 +1581,7 @@ GameObject:
   - component: {fileID: 1452403418}
   - component: {fileID: 1452403420}
   - component: {fileID: 1452403419}
+  - component: {fileID: 1452403421}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1646,12 +1663,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452403415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cc568334c768474b91e8a85e235a2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRate: 0.1
+  moveRate: 0.3
   isGameStarted: 0
   snakebody: {fileID: 5846133151243578445, guid: 6009f20453ed3634fa74306570737cb0, type: 3}
   GameoverUI: {fileID: 2139711406}
@@ -1728,6 +1745,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &1452403421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452403415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82757a7b7858f4408d868a829a83b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveRate: 0.2
+  isGameStarted: 0
+  snakebody: {fileID: 5846133151243578445, guid: 6009f20453ed3634fa74306570737cb0, type: 3}
+  GameoverUI: {fileID: 2139711406}
+  immunityDuration: 3
 --- !u!1 &1637440048
 GameObject:
   m_ObjectHideFlags: 0

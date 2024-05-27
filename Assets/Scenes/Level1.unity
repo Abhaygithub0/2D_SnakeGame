@@ -521,16 +521,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
+      propertyPath: Score
+      value: 
+      objectReference: {fileID: 83480440}
+    - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
       propertyPath: score
       value: 
       objectReference: {fileID: 83480440}
     - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
       propertyPath: snake
       value: 
-      objectReference: {fileID: 1452403418}
+      objectReference: {fileID: 0}
     - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
       propertyPath: TimeRun
-      value: 5
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
+      propertyPath: TimeDelay
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
       propertyPath: scoreLoss
@@ -541,17 +549,29 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
+      propertyPath: ScoreValue
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
       propertyPath: scoreNumber
       value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
+      propertyPath: CheckTimeRun
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
       propertyPath: foodCollider
       value: 
       objectReference: {fileID: 1955758039}
     - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
+      propertyPath: foodcollider
+      value: 
+      objectReference: {fileID: 1955758039}
+    - target: {fileID: 5492675276797125054, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
       propertyPath: foodComponent
       value: 
-      objectReference: {fileID: 1316530067}
+      objectReference: {fileID: 0}
     - target: {fileID: 5846133151243578445, guid: ea0a09e3d950a654e879d762430ac490, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1173,16 +1193,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: Score
+      value: 
+      objectReference: {fileID: 83480440}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: score
       value: 
       objectReference: {fileID: 83480440}
     - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: snake
       value: 
-      objectReference: {fileID: 1452403418}
+      objectReference: {fileID: 0}
     - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: TimeRun
-      value: 5
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: TimeDelay
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: scoreLoss
@@ -1191,6 +1219,14 @@ PrefabInstance:
     - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: timeDelay
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: ScoreValue
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
+      propertyPath: CheckTimeRun
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: foodCollider
@@ -1207,7 +1243,7 @@ PrefabInstance:
     - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: foodComponent
       value: 
-      objectReference: {fileID: 1316530067}
+      objectReference: {fileID: 0}
     - target: {fileID: 2011738614476601366, guid: db26cff0a3fcb804dbd366c9528de4f5, type: 3}
       propertyPath: autoDestroyTime
       value: 3
@@ -1427,10 +1463,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1452403418}
-        m_TargetAssemblyTypeName: SnakeMovement, Assembly-CSharp
-        m_MethodName: StartGame
-        m_Mode: 1
+      - m_Target: {fileID: 2005089137}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1439,10 +1475,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2005089137}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1452403421}
+        m_TargetAssemblyTypeName: SnakeMovement, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1537,34 +1573,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6478887114372616393, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+    - target: {fileID: 7054787240232049151, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: m_Name
+      value: NormalFood
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
       propertyPath: Score
       value: 
       objectReference: {fileID: 83480440}
-    - target: {fileID: 6478887114372616393, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: TimeRun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: TimeDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: ScoreValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: CheckTimeRun
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
       propertyPath: foodcollider
       value: 
       objectReference: {fileID: 1955758039}
-    - target: {fileID: 7054787240232049151, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
-      propertyPath: m_Name
-      value: Food
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
---- !u!114 &1316530067 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6478887114372616393, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
-  m_PrefabInstance: {fileID: 1316530066}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c76b6ce0b7fa29145baa7dfb955f8f3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1452403415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,9 +1616,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1452403417}
   - component: {fileID: 1452403416}
-  - component: {fileID: 1452403418}
   - component: {fileID: 1452403420}
   - component: {fileID: 1452403419}
+  - component: {fileID: 1452403421}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1652,23 +1693,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1452403418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452403415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cc568334c768474b91e8a85e235a2e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveRate: 0.1
-  isGameStarted: 0
-  snakebody: {fileID: 5846133151243578445, guid: 6009f20453ed3634fa74306570737cb0, type: 3}
-  GameoverUI: {fileID: 2139711406}
-  immunityDuration: 3
 --- !u!50 &1452403419
 Rigidbody2D:
   serializedVersion: 4
@@ -1741,6 +1765,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &1452403421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452403415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82757a7b7858f4408d868a829a83b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveRate: 0.1
+  isGameStarted: 0
+  snakebody: {fileID: 5846133151243578445, guid: 6009f20453ed3634fa74306570737cb0, type: 3}
+  GameoverUI: {fileID: 2139711406}
+  immunityDuration: 3
 --- !u!1 &1637440048
 GameObject:
   m_ObjectHideFlags: 0
