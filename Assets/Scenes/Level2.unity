@@ -1552,11 +1552,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 83480440}
     - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: TimeRun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
       propertyPath: TimeDelay
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
       propertyPath: ScoreValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
+      propertyPath: CheckTimeRun
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7061264358114573928, guid: 0ff7f9cff321a584db89ad30bfc8f9d0, type: 3}
